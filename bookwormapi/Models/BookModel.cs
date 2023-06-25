@@ -20,7 +20,7 @@ namespace bookwormapi.Models
         public string BookAuthor { get; set; }
 
         [Required]
-        public float CurrentPrice { get; set; }
+        public float BookPrice { get; set; }
 
         [Required]
         public int BookQuantity { get; set; }
@@ -28,7 +28,12 @@ namespace bookwormapi.Models
         [Required]
         public int PreviousOwnership { get; set; }
 
+        [Required]
+        public int TotalPages { get; set; }
+
         public string BookImg { get; set; }
+
+        public virtual ICollection<ReviewModel> Reviews { get; set; }
 
     }
 }

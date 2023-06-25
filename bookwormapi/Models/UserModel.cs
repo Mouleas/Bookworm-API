@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace bookwormapi.Models
 {
+    [Index(nameof(UserEmail), IsUnique = true)]
     public class UserModel
     {
         [Key]
@@ -15,5 +17,7 @@ namespace bookwormapi.Models
         [Required]
         public string UserPassword { get; set; }
         public float UserAccount { get; set; }
+
+        public virtual ICollection<ReviewModel> Reviews { get; set; }
     }
 }

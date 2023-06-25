@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using bookwormapi.Data;
 using bookwormapi.Models;
+using bookwormapi.Dao;
+using System.Runtime.InteropServices;
 
 namespace bookwormapi.Controllers
 {
@@ -53,8 +55,14 @@ namespace bookwormapi.Controllers
         // PUT: api/UserModels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserModel(int id, UserModel userModel)
+        public async Task<IActionResult> PutUserModel(int id, [FromBody] UserModelDao UserModel)
         {
+            UserModel userModel = await _context.UserModel.FindAsync(id);
+            userModel.UserName = UserModel.UserName;
+            userModel.UserPhone = UserModel.UserPhone;
+            userModel.UserPassword = UserModel.UserPassword;
+            userModel.UserAccount = UserModel.UserAccount;
+
             if (id != userModel.UserId)
             {
                 return BadRequest();
@@ -84,8 +92,17 @@ namespace bookwormapi.Controllers
         // POST: api/UserModels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUserModel(UserModel userModel)
+        public async Task<ActionResult<UserModel>> PostUserModel([FromBody] UserModelDao UserModel)
         {
+            UserModel userModel = new UserModel()
+            {
+                UserId = UserModel.UserId,
+                UserName = UserModel.UserName,
+                UserEmail = UserModel.UserEmail,
+                UserPhone = UserModel.UserPhone,
+                UserPassword  = UserModel.UserPassword,
+                UserAccount = UserModel.UserAccount,
+            };
           if (_context.UserModel == null)
           {
               return Problem("Entity set 'BookwormContext.UserModel'  is null.");

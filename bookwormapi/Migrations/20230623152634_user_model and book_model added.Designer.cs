@@ -11,8 +11,8 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    [Migration("20230622062546_bookmodel added")]
-    partial class bookmodeladded
+    [Migration("20230623152634_user_model and book_model added")]
+    partial class user_modelandbook_modeladded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,10 @@ namespace bookwormapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BookImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BookLanguage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,18 +52,53 @@ namespace bookwormapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("BookPrice")
+                        .HasColumnType("real");
+
                     b.Property<int>("BookQuantity")
                         .HasColumnType("int");
 
-                    b.Property<float>("CurrentPrice")
-                        .HasColumnType("real");
-
                     b.Property<int>("PreviousOwnership")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPages")
                         .HasColumnType("int");
 
                     b.HasKey("BookId");
 
                     b.ToTable("BookModel");
+                });
+
+            modelBuilder.Entity("bookwormapi.Models.UserModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<float>("UserAccount")
+                        .HasColumnType("real");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserModel");
                 });
 #pragma warning restore 612, 618
         }

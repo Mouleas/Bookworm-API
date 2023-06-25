@@ -11,8 +11,8 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    [Migration("20230622085625_usermodel added")]
-    partial class usermodeladded
+    [Migration("20230625060806_ReviewModel-added")]
+    partial class ReviewModeladded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,18 +52,48 @@ namespace bookwormapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("BookPrice")
+                        .HasColumnType("real");
+
                     b.Property<int>("BookQuantity")
                         .HasColumnType("int");
 
-                    b.Property<float>("CurrentPrice")
-                        .HasColumnType("real");
-
                     b.Property<int>("PreviousOwnership")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPages")
                         .HasColumnType("int");
 
                     b.HasKey("BookId");
 
                     b.ToTable("BookModel");
+                });
+
+            modelBuilder.Entity("bookwormapi.Models.ReviewModel", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ReviewModel");
                 });
 
             modelBuilder.Entity("bookwormapi.Models.UserModel", b =>
@@ -79,7 +109,7 @@ namespace bookwormapi.Migrations
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -95,7 +125,39 @@ namespace bookwormapi.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("UserEmail")
+                        .IsUnique();
+
                     b.ToTable("UserModel");
+                });
+
+            modelBuilder.Entity("bookwormapi.Models.ReviewModel", b =>
+                {
+                    b.HasOne("bookwormapi.Models.BookModel", "Book")
+                        .WithMany("Reviews")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("bookwormapi.Models.UserModel", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("bookwormapi.Models.BookModel", b =>
+                {
+                    b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("bookwormapi.Models.UserModel", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }
