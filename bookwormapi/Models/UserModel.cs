@@ -19,5 +19,6 @@ namespace bookwormapi.Models
         public float UserAccount { get; set; }
 
         public virtual ICollection<ReviewModel> Reviews { get; set; }
+        public virtual ICollection<CartModel> Carts { get; set; }
     }
 }

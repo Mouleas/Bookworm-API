@@ -66,6 +66,32 @@ namespace bookwormapi.Migrations
                     b.ToTable("BookModel");
                 });
 
+            modelBuilder.Entity("bookwormapi.Models.CartModel", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartId");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CartModel");
+                });
+
             modelBuilder.Entity("bookwormapi.Models.ReviewModel", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -78,6 +104,10 @@ namespace bookwormapi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReviewDateTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +158,25 @@ namespace bookwormapi.Migrations
                     b.ToTable("UserModel");
                 });
 
+            modelBuilder.Entity("bookwormapi.Models.CartModel", b =>
+                {
+                    b.HasOne("bookwormapi.Models.BookModel", "Book")
+                        .WithMany("Carts")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("bookwormapi.Models.UserModel", "User")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("bookwormapi.Models.ReviewModel", b =>
                 {
                     b.HasOne("bookwormapi.Models.BookModel", "Book")
@@ -149,11 +198,15 @@ namespace bookwormapi.Migrations
 
             modelBuilder.Entity("bookwormapi.Models.BookModel", b =>
                 {
+                    b.Navigation("Carts");
+
                     b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("bookwormapi.Models.UserModel", b =>
                 {
+                    b.Navigation("Carts");
+
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

@@ -28,33 +28,69 @@ namespace bookwormapi.Controllers
 
         // GET: api/ReviewModels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetReviewModel()
+        public async Task<ActionResult<IEnumerable<dynamic>>> GetReviewModel()
         {
           if (_context.ReviewModel == null)
           {
               return NotFound();
           }
             var reviews = await _context.ReviewModel.ToListAsync();
+            //var reviews = await _context.ReviewModel.ToListAsync();
 
-            return reviews;
+
+            foreach (var review in reviews)
+            {
+                if (review.User == null)
+                {
+                    review.User = await _context.UserModel.FindAsync(review.UserId);
+                    review.User.Reviews = null;
+                    
+                }
+                if (review.Book == null)
+                {
+                    review.Book = await _context.BookModel.FindAsync(review.BookId);
+                    review.Book.Reviews = null;
+
+                }
+            }
+
+            return Ok(reviews);;
         }
 
         // GET: api/ReviewModels/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ReviewModel>> GetReviewModel(int id)
+        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetReviewModel(int id)
         {
           if (_context.ReviewModel == null)
           {
               return NotFound();
           }
-            var reviewModel = await _context.ReviewModel.FindAsync(id);
+            var reviews = await _context.ReviewModel.Where(r => (r.BookId == id)).ToListAsync();
+            //var reviews = await _context.ReviewModel.ToListAsync();
 
-            if (reviewModel == null)
+
+            foreach (var review in reviews)
+            {
+                if (review.User == null)
+                {
+                    review.User = await _context.UserModel.FindAsync(review.UserId);
+                    review.User.Reviews = null;
+
+                }
+                if (review.Book == null)
+                {
+                    review.Book = await _context.BookModel.FindAsync(review.BookId);
+                    review.Book.Reviews = null;
+
+                }
+            }
+
+            if (reviews == null)
             {
                 return NotFound();
             }
 
-            return reviewModel;
+            return reviews;
         }
 
         // PUT: api/ReviewModels/5
@@ -64,6 +100,7 @@ namespace bookwormapi.Controllers
         {
             ReviewModel reviewModel = await _context.ReviewModel.FindAsync(id);
             reviewModel.Review = ReviewDao.Review;
+            reviewModel.ReviewDateTime = ReviewDao.ReviewDateTime;
             if (id != reviewModel.ReviewId)
             {
                 return BadRequest();
@@ -101,6 +138,7 @@ namespace bookwormapi.Controllers
                 UserId = ReviewDao.UserId,
                 BookId = ReviewDao.BookId,
                 Review = ReviewDao.Review,
+                ReviewDateTime = ReviewDao.ReviewDateTime,
             };
 
           if (_context.ReviewModel == null)

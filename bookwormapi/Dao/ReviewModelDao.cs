@@ -10,5 +10,7 @@
 
         public string Review { get; set; }
 
+        public string ReviewDateTime { get; set; }
+
     }
 }

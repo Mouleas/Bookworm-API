@@ -20,10 +20,22 @@ namespace bookwormapi.Data
                 .WithOne(b => b.Book)
                 .HasForeignKey(b => b.BookId);
 
+
+            modelBuilder.Entity<UserModel>()
+                .HasMany(c => c.Carts)
+                .WithOne(u => u.User)
+                .HasForeignKey(u => u.UserId);
+
+            modelBuilder.Entity<BookModel>()
+                .HasMany(c => c.Carts)
+                .WithOne(b => b.Book)
+                .HasForeignKey(b => b.BookId);
+
         }
         public DbSet<bookwormapi.Models.BookModel>? BookModel { get; set; }
         public DbSet<bookwormapi.Models.UserModel>? UserModel { get; set; }
         public DbSet<bookwormapi.Models.ReviewModel>? ReviewModel { get; set; }
+        public DbSet<bookwormapi.Models.CartModel>? CartModel { get; set; }
 
 
     }

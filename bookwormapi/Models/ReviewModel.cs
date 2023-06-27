@@ -16,6 +16,9 @@ namespace bookwormapi.Models
 
         [Required]
         public string Review { get; set; }
+
+        [Required]
+        public string ReviewDateTime { get; set; }
  
         public virtual UserModel User { get; set; }
         public virtual BookModel Book { get; set; }
