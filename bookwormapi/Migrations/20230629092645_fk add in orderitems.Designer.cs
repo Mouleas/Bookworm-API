@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bookwormapi.Data;
 
@@ -10,9 +11,11 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    partial class BookwormContextModelSnapshot : ModelSnapshot
+    [Migration("20230629092645_fk add in orderitems")]
+    partial class fkaddinorderitems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

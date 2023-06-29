@@ -35,6 +35,7 @@ namespace bookwormapi.Models
 
         public virtual ICollection<ReviewModel> Reviews { get; set; }
         public virtual ICollection<CartModel> Carts { get; set; }
+        public virtual ICollection<OrderItemsModel> OrderItems { get; set; }
 
 
     }

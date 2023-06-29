@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bookwormapi.Data;
 
@@ -10,9 +11,11 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    partial class BookwormContextModelSnapshot : ModelSnapshot
+    [Migration("20230629055117_add total, noofitems in ordermodel")]
+    partial class addtotalnoofitemsinordermodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,8 +115,6 @@ namespace bookwormapi.Migrations
                     b.HasKey("OrderItemsId");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItemsModel");
                 });
@@ -245,14 +246,6 @@ namespace bookwormapi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("bookwormapi.Models.BookModel", "Book")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
                     b.Navigation("Order");
                 });
 
@@ -278,8 +271,6 @@ namespace bookwormapi.Migrations
             modelBuilder.Entity("bookwormapi.Models.BookModel", b =>
                 {
                     b.Navigation("Carts");
-
-                    b.Navigation("OrderItems");
 
                     b.Navigation("Reviews");
                 });
