@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bookwormapi.Data;
 
@@ -10,9 +11,11 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    partial class BookwormContextModelSnapshot : ModelSnapshot
+    [Migration("20230703072653_add col in orderitems model")]
+    partial class addcolinorderitemsmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,9 +92,6 @@ namespace bookwormapi.Migrations
                     b.Property<int>("PreviousOwnership")
                         .HasColumnType("int");
 
-                    b.Property<int>("PublisherId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TotalPages")
                         .HasColumnType("int");
 
@@ -150,23 +150,18 @@ namespace bookwormapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("BookPrice")
+                    b.Property<float>("OldPriceBook")
                         .HasColumnType("real");
-
-                    b.Property<int>("BookQuantity")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PreviousOwnership")
+                    b.Property<int>("ProductQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("PublisherId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPages")
-                        .HasColumnType("int");
+                    b.Property<string>("TotalPages")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderItemsId");
 

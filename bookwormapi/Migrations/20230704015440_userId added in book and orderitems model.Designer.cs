@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bookwormapi.Data;
 
@@ -10,9 +11,11 @@ using bookwormapi.Data;
 namespace bookwormapi.Migrations
 {
     [DbContext(typeof(BookwormContext))]
-    partial class BookwormContextModelSnapshot : ModelSnapshot
+    [Migration("20230704015440_userId added in book and orderitems model")]
+    partial class userIdaddedinbookandorderitemsmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,16 +153,16 @@ namespace bookwormapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("BookPrice")
+                    b.Property<float>("OldPriceBook")
                         .HasColumnType("real");
-
-                    b.Property<int>("BookQuantity")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("PreviousOwnership")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductQuantity")
                         .HasColumnType("int");
 
                     b.Property<int>("PublisherId")

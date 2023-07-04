@@ -66,8 +66,6 @@ namespace bookwormapi.Controllers
               return NotFound();
           }
             var reviews = await _context.ReviewModel.Where(r => (r.BookId == id)).ToListAsync();
-            //var reviews = await _context.ReviewModel.ToListAsync();
-
 
             foreach (var review in reviews)
             {

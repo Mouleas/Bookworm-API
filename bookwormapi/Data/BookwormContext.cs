@@ -31,15 +31,19 @@ namespace bookwormapi.Data
                 .WithOne(b => b.Book)
                 .HasForeignKey(b => b.BookId);
 
-            modelBuilder.Entity<BookModel>()
-                .HasMany(ot => ot.OrderItems)
-                .WithOne(b => b.Book)
-                .HasForeignKey(b => b.ProductId);
+            //modelBuilder.Entity<BookModel>()
+            //    .HasMany(ot => ot.OrderItems)
+            //    .WithOne(b => b.Book)
+            //    .HasForeignKey(b => b.ProductId);
 
             modelBuilder.Entity<OrderModel>()
                .HasMany(ot => ot.OrderItems)
                .WithOne(o => o.Order)
                .HasForeignKey(o => o.OrderId);
+
+            modelBuilder.Entity<UserModel>()
+                .HasOne(a => a.Address)
+                .WithOne(u => u.User);
 
             
         }
@@ -49,6 +53,7 @@ namespace bookwormapi.Data
         public DbSet<bookwormapi.Models.CartModel>? CartModel { get; set; }
         public DbSet<bookwormapi.Models.OrderModel>? OrderModel { get; set; }
         public DbSet<bookwormapi.Models.OrderItemsModel>? OrderItemsModel { get; set; }
+        public DbSet<bookwormapi.Models.AddressModel>? AddressModel { get; set; }
 
 
     }

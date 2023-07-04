@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using bookwormapi.Data;
 using bookwormapi.Models;
 using Microsoft.AspNetCore.Cors;
+using bookwormapi.Dao;
 
 namespace bookwormapi.Controllers
 {
@@ -15,6 +16,7 @@ namespace bookwormapi.Controllers
     [ApiController]
     public class BookModelsController : ControllerBase
     {
+        string IMAGE_UPLOAD_PATH = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\uploads\books\");
         private readonly BookwormContext _context;
 
         public BookModelsController(BookwormContext context)
@@ -53,9 +55,12 @@ namespace bookwormapi.Controllers
 
         // PUT: api/BookModels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBookModel(int id, BookModel bookModel)
+        [HttpPut("{id}/{quantity}")]
+        public async Task<IActionResult> PutBookModel(int id, int quantity)
         {
+            BookModel bookModel = await _context.BookModel.FindAsync(id);
+            bookModel.BookQuantity -= quantity;
+
             if (id != bookModel.BookId)
             {
                 return BadRequest();
@@ -78,21 +83,60 @@ namespace bookwormapi.Controllers
                     throw;
                 }
             }
+            if (bookModel.BookQuantity == 0)
+            {
+                DeleteBookModel(bookModel.BookId);
+            }
 
-            return NoContent();
+            return CreatedAtAction("GetBookModel", new { id = bookModel.BookId }, bookModel);
         }
 
         // POST: api/BookModels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<BookModel>> PostBookModel(BookModel bookModel)
+        public async Task<ActionResult<BookModel>> PostBookModel([FromForm] BookModelDao bookModelDao)
         {
-          if (_context.BookModel == null)
+            BookModel bookModel = new BookModel()
+            {
+                BookAuthor = bookModelDao.BookAuthor,
+                BookName = bookModelDao.BookName,
+                BookDescription = bookModelDao.BookDescription,
+                BookPrice = bookModelDao.BookPrice,
+                BookQuantity = bookModelDao.BookQuantity,
+                BookLanguage = bookModelDao.BookLanguage,
+                TotalPages = bookModelDao.TotalPages,
+                PreviousOwnership = bookModelDao.PreviousOwnership,
+                PublisherId = bookModelDao.PublisherId,
+            };
+
+            if (_context.BookModel == null)
           {
               return Problem("Entity set 'BookwormContext.BookModel'  is null.");
           }
+            string? ext = null;
+            if (this.Request.Form.Files.Count > 0)
+            {
+                // get extension of picture
+                ext = Path.GetExtension(this.Request.Form.Files[0].FileName);
+                bookModel.BookImg = ext;
+            }
+
             _context.BookModel.Add(bookModel);
             await _context.SaveChangesAsync();
+
+            if (this.Request.Form.Files.Count > 0)
+            {
+                // Generate name for the file
+                int bookId = bookModel.BookId;
+                string fileName = Convert.ToString(bookId) + ext;
+
+                // Create path and stream it to the location
+                var filePath = @IMAGE_UPLOAD_PATH +fileName;
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    this.Request.Form.Files[0].CopyTo(stream);
+                }
+            }
 
             return CreatedAtAction("GetBookModel", new { id = bookModel.BookId }, bookModel);
         }

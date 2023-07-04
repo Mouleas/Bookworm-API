@@ -28,14 +28,18 @@ namespace bookwormapi.Models
         [Required]
         public int PreviousOwnership { get; set; }
 
+        public int PublisherId { get; set; }
+
         [Required]
         public int TotalPages { get; set; }
+
+        
 
         public string BookImg { get; set; }
 
         public virtual ICollection<ReviewModel> Reviews { get; set; }
         public virtual ICollection<CartModel> Carts { get; set; }
-        public virtual ICollection<OrderItemsModel> OrderItems { get; set; }
+        //public virtual ICollection<OrderItemsModel> OrderItems { get; set; }
 
 
     }

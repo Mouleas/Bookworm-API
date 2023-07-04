@@ -9,10 +9,14 @@
 
         public string BookAuthor { get; set; }
         public float BookPrice { get; set; }
+
+        public int BookQuantity { get; set; }
         public int PreviousOwnership { get; set; }
+
+        public int PublisherId { get; set; }
 
         public int TotalPages { get; set; }
 
-        public string BookImg { get; set; }
+        //public string BookImg { get; set; }
     }
 }

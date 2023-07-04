@@ -44,11 +44,11 @@ namespace bookwormapi.Controllers
           }
             var orderItemsModel = await _context.OrderItemsModel.Where(o => (o.OrderId == id)).ToListAsync();
 
-            foreach (var orderItem in orderItemsModel)
-            {
-                orderItem.Book = await _context.BookModel.FindAsync(orderItem.ProductId);
-                orderItem.Book.OrderItems = null;
-            }
+            //foreach (var orderItem in orderItemsModel)
+            //{
+            //    orderItem.Book = await _context.BookModel.FindAsync(orderItem.ProductId);
+            //    orderItem.Book.OrderItems = null;
+            //}
 
 
             if (orderItemsModel == null)
@@ -99,8 +99,15 @@ namespace bookwormapi.Controllers
             {
                 OrderItemsId = orderItemsModelDao.OrderItemsId,
                 OrderId = orderItemsModelDao.OrderId,
-                ProductId = orderItemsModelDao.ProductId,
-                ProductQuantity = orderItemsModelDao.ProductQuantity,
+                BookName = orderItemsModelDao.BookName,
+                BookDescription = orderItemsModelDao.BookDescription,
+                BookLanguage = orderItemsModelDao.BookLanguage,
+                BookAuthor = orderItemsModelDao.BookAuthor,
+                BookPrice = orderItemsModelDao.BookPrice,
+                BookQuantity = orderItemsModelDao.BookQuantity,
+                TotalPages = orderItemsModelDao.TotalPages,
+                PreviousOwnership = orderItemsModelDao.PreviousOwnership,
+                PublisherId = orderItemsModelDao.PublisherId,
             };
           if (_context.OrderItemsModel == null)
           {

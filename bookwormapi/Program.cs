@@ -40,6 +40,7 @@ namespace bookwormapi
                 app.UseSwaggerUI();
             }
             app.UseCors(MyAllowSpecificOrigins);
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
