@@ -37,7 +37,6 @@ namespace bookwormapi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<OrderItemsModel>>> GetOrderItemsModel(int id)
         {
-            Console.WriteLine(id + " IN GET_ORDER_ITEM_MODEL");
           if (_context.OrderItemsModel == null)
           {
               return NotFound();
@@ -61,9 +60,11 @@ namespace bookwormapi.Controllers
 
         // PUT: api/OrderItemsModels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderItemsModel(int id, OrderItemsModel orderItemsModel)
+        [HttpPut("{id}/{quantity}")]
+        public async Task<IActionResult> PutOrderItemsModel(int id, int quantity)
         {
+            OrderItemsModel orderItemsModel = await _context.OrderItemsModel.FindAsync(id);
+            orderItemsModel.BookQuantity -= quantity;
             if (id != orderItemsModel.OrderItemsId)
             {
                 return BadRequest();

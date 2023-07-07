@@ -1,24 +1,24 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\33.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\33.png"
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\58.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\58.jfif"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\34.jfif",
-      "PackagePath": "staticwebassets\\uploads\\books\\34.jfif"
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\59.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\59.jfif"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\35.jfif",
-      "PackagePath": "staticwebassets\\uploads\\books\\35.jfif"
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\60.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\60.png"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\36.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\36.png"
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\61.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\61.png"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\37.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\37.png"
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\62.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\62.jfif"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.bookwormapi.Microsoft.AspNetCore.StaticWebAssets.props",

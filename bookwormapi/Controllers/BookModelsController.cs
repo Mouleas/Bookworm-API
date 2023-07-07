@@ -52,6 +52,46 @@ namespace bookwormapi.Controllers
 
             return bookModel;
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> updateBook(int id, [FromBody] BookModelDao bookModelDao)
+        {
+
+            BookModel bookModel = await _context.BookModel.FindAsync(id);
+            bookModel.BookName = bookModelDao.BookName;
+            bookModel.BookDescription = bookModelDao.BookDescription;
+            bookModel.BookPrice = bookModelDao.BookPrice;
+            bookModel.BookAuthor = bookModelDao.BookAuthor;
+            bookModel.BookQuantity = bookModelDao.BookQuantity;
+            bookModel.BookLanguage = bookModelDao.BookLanguage;
+            bookModel.TotalPages = bookModelDao.TotalPages;
+
+            if (id != bookModel.BookId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(bookModel).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!BookModelExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtAction("GetBookModel", new { id = bookModel.BookId }, bookModel);
+        }
+
+
 
         // PUT: api/BookModels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -82,10 +122,6 @@ namespace bookwormapi.Controllers
                 {
                     throw;
                 }
-            }
-            if (bookModel.BookQuantity == 0)
-            {
-                DeleteBookModel(bookModel.BookId);
             }
 
             return CreatedAtAction("GetBookModel", new { id = bookModel.BookId }, bookModel);

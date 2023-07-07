@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dSiQxe0F95MAxjPYlbLCHxih3e/QFwJ7Gv7X1IWWxnQ=",
+  "Hash": "WOUeogX5P6L8ZKyFpSxC1vwPCgZ3NI+yLEH46tcS3dQ=",
   "Source": "bookwormapi",
   "BasePath": "_content/bookwormapi",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\33.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\58.jfif",
       "SourceId": "bookwormapi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\",
       "BasePath": "_content/bookwormapi",
-      "RelativePath": "uploads/books/33.png",
+      "RelativePath": "uploads/books/58.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\books\\33.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\books\\58.jfif"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\34.jfif",
+      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\59.jfif",
       "SourceId": "bookwormapi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\",
       "BasePath": "_content/bookwormapi",
-      "RelativePath": "uploads/books/34.jfif",
+      "RelativePath": "uploads/books/59.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,15 +48,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\books\\34.jfif"
+      "OriginalItemSpec": "wwwroot\\uploads\\books\\59.jfif"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\35.jfif",
+      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\60.png",
       "SourceId": "bookwormapi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\",
       "BasePath": "_content/bookwormapi",
-      "RelativePath": "uploads/books/35.jfif",
+      "RelativePath": "uploads/books/60.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\books\\35.jfif"
+      "OriginalItemSpec": "wwwroot\\uploads\\books\\60.png"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\36.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\61.png",
       "SourceId": "bookwormapi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\",
       "BasePath": "_content/bookwormapi",
-      "RelativePath": "uploads/books/36.png",
+      "RelativePath": "uploads/books/61.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,15 +82,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\books\\36.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\books\\61.png"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\37.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\62.jfif",
       "SourceId": "bookwormapi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\",
       "BasePath": "_content/bookwormapi",
-      "RelativePath": "uploads/books/37.png",
+      "RelativePath": "uploads/books/62.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +99,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\books\\37.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\books\\62.jfif"
     }
   ]
 }
