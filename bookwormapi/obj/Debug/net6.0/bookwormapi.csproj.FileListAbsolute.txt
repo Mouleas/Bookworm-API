@@ -293,3 +293,5 @@ C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\runtimes\win-arm64\
 C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\bookwormapi.staticwebassets.runtime.json
+C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\SendGrid.dll
+C:\Users\HP\Desktop\bookwormapi\bookwormapi\bin\Debug\net6.0\StarkbankEcdsa.dll

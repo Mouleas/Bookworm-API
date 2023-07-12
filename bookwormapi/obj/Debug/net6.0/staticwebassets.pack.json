@@ -85,6 +85,30 @@
       "PackagePath": "staticwebassets\\uploads\\books\\78.png"
     },
     {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\79.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\79.jfif"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\80.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\80.jfif"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\81.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\81.jfif"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\82.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\82.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\83.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\83.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\bookwormapi\\bookwormapi\\wwwroot\\uploads\\books\\84.jfif",
+      "PackagePath": "staticwebassets\\uploads\\books\\84.jfif"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.bookwormapi.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

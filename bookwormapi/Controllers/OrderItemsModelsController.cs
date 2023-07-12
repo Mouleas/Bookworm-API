@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using bookwormapi.Data;
 using bookwormapi.Models;
 using bookwormapi.Dao;
+using bookwormapi.SendgridAPI;
 
 namespace bookwormapi.Controllers
 {
@@ -90,6 +91,20 @@ namespace bookwormapi.Controllers
 
             return NoContent();
         }
+
+
+        [HttpPost("orderItems/")]
+        public async Task<ActionResult> PostAllOrderItemsModel([FromBody] List<OrderItemsModelDao> allOrderItemsModelDao)
+        {
+            new Email().sendOrderDetails(allOrderItemsModelDao);
+            foreach (var orderItemsModelDao in allOrderItemsModelDao)
+            {
+                await PostOrderItemsModel(orderItemsModelDao);
+            }
+            
+            return Ok();
+        }
+
 
         // POST: api/OrderItemsModels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
